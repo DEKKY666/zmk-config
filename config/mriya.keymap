@@ -24,30 +24,56 @@
 / {
     combos {
         compatible = "zmk,combos";
+    };
 
-        new_combo {
-            bindings = <&kp COLON>;
-            key-positions = <26 14>;
+    behaviors {
+        esc_bind: esc_bind {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ESC_BIND";
+            #binding-cells = <0>;
+            bindings =
+                <&kp ESC>,
+                <&kp F5>;
         };
-
-        new_combo {
-            bindings = <&kp KP_COMMA>;
-            key-positions = <26 15>;
+        b1: b1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "B1";
+            #binding-cells = <0>;
+            bindings =
+                <&kp SEMI>,
+                <&kp COLON>;
         };
-
-        new_combo {
-            bindings = <&kp EXCLAMATION>;
-            key-positions = <26 16>;
+        b5: b5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "B5";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LESS_THAN>,
+                <&kp GREATER_THAN>;
         };
-
-        new_combo {
-            bindings = <&kp PIPE>;
-            key-positions = <26 3>;
+        b2: b2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "B2";
+            #binding-cells = <0>;
+            bindings =
+                <&kp KP_DOT>,
+                <&kp KP_COMMA>;
         };
-
-        new_combo {
-            bindings = <&kp GREATER_THAN>;
-            key-positions = <26 39>;
+        b3: b3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "B3";
+            #binding-cells = <0>;
+            bindings =
+                <&kp QUESTION>,
+                <&kp EXCLAMATION>;
+        };
+        b4: b4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "B4";
+            #binding-cells = <0>;
+            bindings =
+                <&kp DOUBLE_QUOTES>,
+                <&kp SQT>;
         };
     };
 
@@ -56,21 +82,21 @@
 
         default_layer {
             bindings = <
-                         &kp ESC        &kp SQT              &kp KP_SLASH  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSPACE       &kp N6          &kp N7     &kp N8                  &kp N9  &kp N0      &kp MINUS
-&kp LEFT_CONTROL      &kp DELETE  &kp SEMICOLON                &kp PERIOD      &kp QUESTION              &kp P          &kp Y        &kp F           &kp G      &kp C                   &kp R   &kp L       &kp LBKT  &mt RWIN RBKT
-                  &kp LEFT_SHIFT          &kp A                     &kp O             &kp E              &kp U          &kp I        &kp D           &kp H      &kp T                   &kp N   &kp S  &mt RCTRL SQT
-                        &kp LALT         &kp LT                     &kp Q             &kp J              &kp K          &kp X        &kp B           &kp M      &kp W                   &kp V   &kp Z  &mt RALT BSLH
-                                                 &kp C_AL_KEYBOARD_LAYOUT         &lt 2 TAB    &mt LSHFT SPACE      &lt 1 RET    &lt 1 ESC  &mt RSHFT BSPC  &lt 2 DEL  &mt RGUI RIGHT_BRACKET
+                   &esc_bind  &kp F9     &kp F10    &kp F11          &kp F12  &kp BACKSPACE     &kp HOME          &kp N7     &kp N8                  &kp N9  &kp N0      &kp MINUS
+&kp LEFT_CONTROL  &kp DELETE     &b1         &b2        &b3            &kp P          &kp Y        &kp F           &kp G      &kp C                   &kp R   &kp L       &kp LBKT  &mt RWIN RBKT
+                         &b4   &kp A       &kp O      &kp E            &kp U          &kp I        &kp D           &kp H      &kp T                   &kp N   &kp S  &mt RCTRL SQT
+                    &kp LALT     &b5       &kp Q      &kp J            &kp K          &kp X        &kp B           &kp M      &kp W                   &kp V   &kp Z  &mt RALT BSLH
+                                      &lt 1 HASH  &lt 2 TAB  &mt LSHFT SPACE      &lt 1 RET    &lt 1 ESC  &mt RSHFT BSPC  &lt 2 DEL  &mt RGUI RIGHT_BRACKET
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans    &trans  &trans     &trans    &trans     &trans       &trans    &trans     &trans    &trans    &trans           &trans
-&trans       &kp UNDER    &kp F1  &kp F2     &kp F3    &kp F4     &kp F5       &kp F6    &kp F7     &kp F8    &kp F9   &kp F10          &kp F11  &mt RGUI F12
-        &mt LCTRL PLUS  &kp EXCL  &kp AT   &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &mt RCTRL MINUS
-        &mt LALT EQUAL    &kp N1  &kp N2     &kp N3    &kp N4     &kp N5       &kp N6    &kp N7     &kp N8    &kp N9    &kp N0           &trans
-                                  &trans  &lt 3 TAB    &trans     &trans       &trans    &trans  &lt 3 DEL    &trans
+                &trans  &kp KP_PLUS  &kp KP_MINUS   &kp KP_EQUAL        &kp UNDERSCORE                 &trans    &kp KP_NUMBER_0           &trans           &trans    &trans    &trans           &trans
+&trans          &trans  &kp AT_SIGN    &kp DOLLAR       &kp HASH  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3    &kp F9   &kp F10          &kp F11  &mt RGUI F12
+        &mt LCTRL PLUS  &kp PERCENT     &kp CARET  &kp AMPERSAND          &kp ASTERISK              &kp PRCNT    &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp LPAR  &kp RPAR  &mt RCTRL MINUS
+        &mt LALT EQUAL       &kp N1        &kp N2         &kp N3                &kp N4                 &kp N5    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9    &kp N9    &kp N0           &trans
+                                           &trans      &lt 3 TAB                &trans                 &trans             &trans           &trans        &lt 3 DEL    &trans
             >;
         };
 

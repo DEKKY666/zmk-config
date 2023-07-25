@@ -97,13 +97,25 @@
             compatible = "zmk,behavior-macro";
             label = "COPY";
             #binding-cells = <0>;
-            bindings = <&kp LC(C)>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp LCTRL>;
         };
         past: past {
             compatible = "zmk,behavior-macro";
             label = "PAST";
             #binding-cells = <0>;
-            bindings = <&kp LC(V)>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LCTRL>;
         };
     };
 
